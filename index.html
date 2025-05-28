@@ -26,18 +26,39 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            </ul>            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
                 <span class="sun-icon">☀️</span>
-                <span class="moon-icon">🌙</span>
+                <span class="moon-icon">🌑</span>
             </button>
         </div>
     </nav>    <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Capturing Moments That Matter</h1>
-            <p class="hero-subtitle">Wedding Photography & Videography</p>
-            <a href="#portfolio" class="btn">View Portfolio</a>
+            <div class="hero-badge">@thebbqingbrit</div>
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-line-1">Where Stories</span>
+                    <span class="hero-line-2">Come to Life</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span class="subtitle-accent">Cinematic Wedding Films</span>
+                    <span class="subtitle-divider">×</span>
+                    <span class="subtitle-accent">Timeless Photography</span>
+                </div>
+                <p class="hero-description">Creating beautiful, authentic stories for couples across the UK through the art of visual storytelling</p>
+            </div>
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn-hero btn-primary">Explore Our Work</a>
+                <a href="#contact" class="btn-hero btn-secondary">
+                    <span class="btn-icon">💬</span>
+                    Let's Chat
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-icon"></div>
+            <span>Scroll to discover</span>
         </div>
     </section>
 
@@ -112,32 +133,42 @@
 
     <!-- Recent Work Section -->
     <section class="recent-work section-alt">
-        <div class="container">
-            <h2>Recent Work</h2>
-            <p style="text-align: center; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Here's a glimpse of my latest wedding photography and videography work. Each couple has their own unique story, and I love bringing that to life through my lens.</p>
-            <div class="recent-work-grid">
+        <div class="container">            <h2>Recent Work</h2>
+            <p>Here's a glimpse of my latest wedding photography and videography work. Each couple has their own unique story, and I love bringing that to life through my lens.</p>
+            <div class="work-grid">
                 <div class="work-item" data-type="photography">
                     <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="work-content">
                         <h4>Sarah & Tom's Garden Wedding</h4>
-                        <p>Intimate countryside ceremony with natural lighting</p>
-                        <span class="work-type">Photography</span>
+                        <div class="work-date">Spring 2024</div>
+                        <p class="work-excerpt">Intimate countryside ceremony with natural lighting and romantic garden setting</p>
+                        <span class="work-service">Photography</span>
                     </div>
                 </div>
                 <div class="work-item" data-type="videography">
                     <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="work-content">
                         <h4>Emma & James's Beach Wedding</h4>
-                        <p>Cinematic highlight reel of their seaside celebration</p>
-                        <span class="work-type">Videography</span>
+                        <div class="work-date">Summer 2024</div>
+                        <p class="work-excerpt">Cinematic highlight reel of their seaside celebration with stunning sunset views</p>
+                        <span class="work-service">Videography</span>
                     </div>
-                </div>
-                <div class="work-item" data-type="both">
+                </div>                <div class="work-item" data-type="both">
                     <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="work-content">
                         <h4>Rebecca & Michael's City Wedding</h4>
-                        <p>Urban elegance with complete photo & video coverage</p>
-                        <span class="work-type">Photo + Video</span>
+                        <div class="work-date">Autumn 2024</div>
+                        <p class="work-excerpt">Urban elegance with complete photo & video coverage in the heart of the city</p>
+                        <span class="work-service">Photo + Video</span>
+                    </div>
+                </div>
+                <div class="work-item" data-type="photography">
+                    <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="work-content">
+                        <h4>Charlotte & David's Rustic Barn Wedding</h4>
+                        <div class="work-date">Winter 2024</div>
+                        <p class="work-excerpt">Cozy winter celebration with fairy lights and candlelit ceremony in a converted barn</p>
+                        <span class="work-service">Photography</span>
                     </div>
                 </div>
             </div>
@@ -162,17 +193,17 @@
                 <div class="portfolio-item" style="background-image: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>                <div class="portfolio-item" style="background-image: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
             </div>
         </div>
-    </section>
-
-    <!-- Mid-page CTA -->
+    </section>    <!-- Mid-page CTA -->
     <section class="mid-cta">
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Capture Your Love Story?</h2>
-                <p>I'd love to hear about your special day and discuss how we can create beautiful memories together. Every couple deserves to have their unique story told with artistry and heart.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn">Get In Touch</a>
-                    <a href="tel:+44-7123-456789" class="btn btn-secondary">Call Now</a>
+                <p>I'd love to hear about your special day and discuss how we can create beautiful memories together. Every couple deserves to have their unique story told with artistry and heart.</p>                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#contact" class="btn btn-call">
+                        <span class="call-icon">💬</span>
+                        Message Us
+                    </a>
                 </div>
             </div>
         </div>
@@ -465,22 +496,20 @@
             });
         });
 
-        // Trust badges animation on scroll
+        // Trust badges animation on scroll        // Enhanced scroll animations for badges and work items
         const trustBadges = document.querySelectorAll('.badge');
-        const badgeObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+        
+        const enhancedObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0) scale(1)';
-                    }, index * 100); // Stagger animation
+                    entry.target.classList.add('animate-in');
                 }
             });
-        }, observerOptions);        trustBadges.forEach(badge => {
-            badge.style.opacity = '0';
-            badge.style.transform = 'translateY(30px) scale(0.9)';
-            badge.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            badgeObserver.observe(badge);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        // Observe badges and work items for enhanced animations
+        [...trustBadges, ...workItems].forEach(element => {
+            enhancedObserver.observe(element);
         });
 
         // Scroll to top functionality
