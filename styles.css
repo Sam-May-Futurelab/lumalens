@@ -272,7 +272,7 @@ p {
     color: var(--white);
     text-decoration: none;
     border: none;
-    border-radius: 3px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1rem;
@@ -1961,106 +1961,444 @@ body.dark-mode .btn-call:hover {
     padding: 60px 0;
 }
 
-.instagram-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
+/* Instagram Carousel */
+.instagram-carousel-container {
+    position: relative;
+    max-width: 600px;
+    margin: 2rem auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    background: var(--white);
 }
 
-.instagram-item {
-    aspect-ratio: 1;
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+.instagram-carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    height: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
     position: relative;
     overflow: hidden;
 }
 
-.instagram-item:hover {
-    transform: scale(1.05);
+.carousel-slide .instagram-item {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: all 0.6s ease;
 }
 
-.instagram-item::after {
-    content: '📷';
+.instagram-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.2), rgba(44, 44, 44, 0.4));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(2px);
+}
+
+.carousel-slide:hover .instagram-overlay {
+    opacity: 1;
+}
+
+.instagram-overlay span {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    transform: translateY(20px);
+    transition: transform 0.4s ease 0.1s;
+}
+
+.overlay-text {
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: transform 0.4s ease 0.2s;
+    letter-spacing: 1px;
+}
+
+.carousel-slide:hover .instagram-overlay span,
+.carousel-slide:hover .overlay-text {
+    transform: translateY(0);
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0.8;
 }
 
-.instagram-item:hover::after {
+.carousel-btn:hover {
+    background: var(--white);
+    transform: translateY(-50%) scale(1.1);
     opacity: 1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-btn-prev {
+    left: 20px;
+}
+
+.carousel-btn-next {
+    right: 20px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active,
+.indicator:hover {
+    background: var(--white);
+    border-color: var(--white);
+    transform: scale(1.2);
+}
+
+/* Dark Mode Support */
+body.dark-mode .instagram-carousel-container {
+    background: var(--secondary-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .carousel-btn {
+    background: rgba(139, 115, 85, 0.9);
+    color: var(--white);
+}
+
+body.dark-mode .carousel-btn:hover {
+    background: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .instagram-carousel-container {
+        max-width: 90%;
+        margin: 1.5rem auto;
+    }
+    
+    .instagram-carousel {
+        height: 300px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-btn-prev {
+        left: 15px;
+    }
+    
+    .carousel-btn-next {
+        right: 15px;
+    }
+    
+    .instagram-overlay span {
+        font-size: 2rem;
+    }
+    
+    .overlay-text {
+        font-size: 1rem;
+    }
 }
 
 /* Footer */
 footer {
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #1a1a1a 100%);
     color: var(--white);
-    padding: 3rem 0 2rem;
+    padding: 4rem 0 2rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%238B7355" stop-opacity="0.1"/><stop offset="100%" stop-color="%238B7355" stop-opacity="0"/></radialGradient></defs><circle cx="20" cy="10" r="3" fill="url(%23a)"/><circle cx="80" cy="10" r="3" fill="url(%23a)"/></svg>') repeat;
+    animation: footerShine 20s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes footerShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 footer h3 {
     color: var(--white);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+footer h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    border-radius: 2px;
 }
 
 footer p {
     color: rgba(255, 255, 255, 0.9);
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+footer p:hover {
+    color: rgba(255, 255, 255, 1);
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content > div {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-content > div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(139, 115, 85, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.footer-content > div:hover::before {
+    left: 100%;
+}
+
+.footer-content > div:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(139, 115, 85, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin-top: 1rem;
 }
 
 .social-links a {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), #a08568);
+    color: var(--white);
+    border-radius: 15px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(139, 115, 85, 0.3);
+}
+
+.social-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover::before {
+    opacity: 1;
 }
 
 .social-links a:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
+    transform: translateY(-8px) rotate(5deg) scale(1.1);
+    box-shadow: 0 15px 25px rgba(139, 115, 85, 0.4);
 }
 
+.social-links a:nth-child(1):hover { transform: translateY(-8px) rotate(-5deg) scale(1.1); }
+.social-links a:nth-child(2):hover { transform: translateY(-8px) rotate(0deg) scale(1.1); }
+.social-links a:nth-child(3):hover { transform: translateY(-8px) rotate(5deg) scale(1.1); }
+
 .copyright {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 2.5rem;
     color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 2;
+}
+
+.copyright::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
 }
 
 .copyright p {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* Designer Credit Styles */
+.designer-credit {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    text-align: center;
+}
+
+.futurelab-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.futurelab-link:hover {
+    color: #a8946a;
+    text-shadow: 0 0 8px rgba(139, 115, 85, 0.5);
+    transform: translateY(-1px);
+}
+
+.futurelab-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary-color), #a8946a);
+    transition: width 0.3s ease;
+}
+
+.futurelab-link:hover::after {
+    width: 100%;
+}
+
+/* Dark Mode Designer Credit */
+body.dark-mode .designer-credit {
+    color: rgba(224, 224, 224, 0.5);
+}
+
+body.dark-mode .futurelab-link {
+    color: var(--primary-color);
+}
+
+body.dark-mode .futurelab-link:hover {
+    color: #a8946a;
+    text-shadow: 0 0 8px rgba(139, 115, 85, 0.6);
+}
+
+/* Dark Mode Footer Enhancements */
+body.dark-mode footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+}
+
+body.dark-mode .footer-content > div {
+    background: rgba(139, 115, 85, 0.1);
+    border-color: rgba(139, 115, 85, 0.2);
+}
+
+body.dark-mode .footer-content > div:hover {
+    background: rgba(139, 115, 85, 0.15);
+    border-color: rgba(139, 115, 85, 0.4);
 }
 
 /* Scroll to Top Button */
@@ -2330,11 +2668,45 @@ footer p {
     .contact-form {
         margin: 0 20px;
         padding: 2rem;
-    }
-
-    .mid-cta {
+    }    .mid-cta {
         margin: 20px 0;
         padding: 40px 0;
+    }
+
+    /* Footer Responsive */
+    footer {
+        padding: 3rem 0 2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-content > div {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    footer h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .copyright p {
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
 }
 
@@ -2452,14 +2824,37 @@ footer p {
         font-size: 0.95rem;
         line-height: 1.6;
         margin-bottom: 1rem;
-    }
-
-    .testimonial-content::before,
+    }    .testimonial-content::before,
     .testimonial-content::after {
         font-size: 4rem;
     }
 
     .heart-icon {
         font-size: 1.5rem;
+    }
+
+    /* Footer Small Screen */
+    footer {
+        padding: 2.5rem 0 1.5rem;
+    }
+
+    .footer-content > div {
+        padding: 1.2rem;
+        margin: 0 0.5rem;
+    }
+
+    footer h3 {
+        font-size: 1.1rem;
+    }
+
+    .social-links a {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .copyright p {
+        font-size: 0.8rem;
+        padding: 0 1rem;
     }
 }
