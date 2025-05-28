@@ -1,0 +1,16 @@
+/* Simple test CSS */
+body {
+    background-color: lightblue;
+    font-family: Arial, sans-serif;
+}
+
+.logo {
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav {
+    background-color: yellow;
+    padding: 10px;
+}
